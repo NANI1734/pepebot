@@ -59,3 +59,30 @@ mongoose.connection.on('disconnected', () => {
 
 const client = new myClient();
 client.start();
+
+//          ______
+//          Format
+/*          ------
+const { MessageEmbed } = require('discord.js');
+const { Command } = require('discord.js-akago')
+const Colors = require('../../Colors.json')
+
+module.exports = class NAMECommand extends Command {
+    constructor() {
+        super('NAME', {
+            description: 'DESCRIPTION',
+            category: 'CATEGORY',
+        }, {
+            usage: `USAGE`
+        });
+    }
+
+    async execute(message, args) {
+        //Code
+        
+        function msg(msg) {
+            return message.channel.send(msg)
+        }
+    }
+};
+*/
