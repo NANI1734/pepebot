@@ -37,7 +37,6 @@ module.exports = class HelpCommand extends Command {
 
                 const filteredCommands = commands.filter(c => c.category == category && c.nsfw === false);
                 if (category === '| NSFW |') continue;
-                if (category === '| Owner |') continue;
 
                 embed.addFields([{
                     name: category || 'Misc',
@@ -46,7 +45,6 @@ module.exports = class HelpCommand extends Command {
             }
             for (const category of categories) {
                 const filteredall = commands.filter(c => c.category === '| NSFW |')
-                const filteredOwner = commands.filter(c => c.category === '| Owner |')
                 if (category !== '| NSFW |' || category === '| Owner |') continue;
                 else {
                     if (message.guild.id === '796818619027685407') {
