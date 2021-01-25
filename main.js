@@ -1,6 +1,7 @@
 const config = require('./config.json')
 const { AkagoClient, CommandHandler, ListenerHandler, InhibitorHandler } = require('discord.js-akago');
 const mongoose = require('mongoose');
+const mongo = require('./Utils/mongoose')
 class myClient extends AkagoClient {
     constructor() {
         super({
@@ -32,30 +33,7 @@ class myClient extends AkagoClient {
 
 }
 
-const dbOptions = {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    autoIndex: false,
-    poolSize: 5,
-    connectTimeoutMS: 10000,
-    family: 4
-};
-
-mongoose.connect('mongodb+srv://Taken:9idBIifeEfCPTQ5S@bot.gmuqc.mongodb.net/Taken?retryWrites=true&w=majority', dbOptions);
-mongoose.set('useFindAndModify', false);
-mongoose.Promise = global.Promise;
-
-mongoose.connection.on('connected', () => {
-    console.log('Mongoose has successfully connected!');
-});
-
-mongoose.connection.on('err', err => {
-    console.error(`Mongoose connection error: \n${err.stack}`);
-});
-
-mongoose.connection.on('disconnected', () => {
-    console.warn('Mongoose connection lost');
-});
+mongo(mongoose)
 
 const client = new myClient();
 client.start();
