@@ -8,7 +8,7 @@ module.exports = class BlackListInhibitor extends Inhibitor {
     execute(message) {
         const blacklists = ['']; 
         if (blacklists.includes(message.author.id)){
-            return message.channel.send(`You are blacklisted From using \`pepe bot's\` commands`)
+            return message.channel.send(`You are blacklisted From using \`Alphabot's\` commands`)
         } 
         return blacklists.includes(message.author.id)
     }

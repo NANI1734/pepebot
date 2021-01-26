@@ -9,7 +9,7 @@ module.exports = class HelpCommand extends Command {
             category: '| Utils |',
             guildOnly: false
         }, {
-            usage: `help // *help [command_name]`
+            usage: `help // :help [command_name]`
         });
     }
     async execute(message, args) {
@@ -24,14 +24,14 @@ module.exports = class HelpCommand extends Command {
                 embed.addField('Aliases', command.aliases.map(a => `\`${a}\``).join(' '));
             }
             if (command.opts.usage) {
-                embed.addField('Usage', `*${command.opts.usage}`)
+                embed.addField('Usage', `:${command.opts.usage}`)
             }
 
         }
         else {
             const categories = util.removeDuplicates(commands.map(c => c.category));
 
-            embed.setDescription('For additional info on a command, use `*help <command>`');
+            embed.setDescription('For additional info on a command, use `:help <command>`');
             embed.setFooter(` There are currently ${commands.size} commands`)
             for (const category of categories) {
 
@@ -40,7 +40,7 @@ module.exports = class HelpCommand extends Command {
 
                 embed.addFields([{
                     name: category || 'Misc',
-                    value: filteredCommands.map(c => `\`*${c.name}\``).join('  , '),
+                    value: filteredCommands.map(c => `\`:${c.name}\``).join('  , '),
                 }]);
             }
             for (const category of categories) {
@@ -52,7 +52,7 @@ module.exports = class HelpCommand extends Command {
                     }
                     else {
                         if (message.channel.nsfw) {
-                            embed.addField(`| NSFW |`, filteredall.map(c => `\`*${c.name}\``).join(' ,'));
+                            embed.addField(`| NSFW |`, filteredall.map(c => `\`:${c.name}\``).join(' ,'));
                         }
                     }
                 }

@@ -12,7 +12,7 @@ class myClient extends AkagoClient {
         });
         this.commandHandler = new CommandHandler(this, {
             commandDirectory: './commands',
-            prefix: 'pepe',
+            prefix: ':',
             defaultCooldown: 4,
             allowMentionPrefix: true,
             blockBots: true,

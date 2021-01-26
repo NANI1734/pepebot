@@ -14,7 +14,7 @@ module.exports = class ReadyListener extends Listener {
         this.client.user.setPresence({
             status: 'active',
             activity: {
-                name: 'pepe help',
+                name: ':help',
                 type: 1,
             }
         });
